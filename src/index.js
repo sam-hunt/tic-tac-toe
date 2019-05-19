@@ -43,6 +43,7 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      moveListOrderAsc: true,
     };
   }
 
@@ -72,13 +73,18 @@ class Game extends React.Component {
     });
   }
 
+  toggleMoveListOrder(){
+    this.setState({
+      moveListOrderAsc: !this.state.moveListOrderAsc,
+    })
+  }
 
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
     const moves = history.map((step, move) => {
-      const desc = move ?
+      const desc = step.moveDetails ?
         `Go to move #${move} at ${step.moveDetails}`:
         'Go to game start';
       return (
@@ -90,6 +96,7 @@ class Game extends React.Component {
         </li>
       );
     });
+    const orderedMoves = this.state.moveListOrderAsc ? moves : moves.reverse();
 
 
     let status;
@@ -109,7 +116,8 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <button onClick={() => this.toggleMoveListOrder()}>Toggle Move List Order</button>
+          <ol>{orderedMoves}</ol>
         </div>
       </div>
     );
