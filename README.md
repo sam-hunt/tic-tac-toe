@@ -1,3 +1,9 @@
+# Tic-Tac-Toe
+
+An extension of the [official react tutorial](https://reactjs.org/tutorial/tutorial.html) with the suggested improvements made.
+
+![Example Game Screenshot](public/readme-example-game.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
